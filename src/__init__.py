@@ -1,0 +1,1 @@
+"""Financial simulator package."""
