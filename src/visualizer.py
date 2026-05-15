@@ -52,12 +52,30 @@ def _fan_chart(
     line = {"blue": "#005ac8", "green": "#00a03c", "orange": "#dc6e00"}.get(color, "#777")
 
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=years, y=p50, name="Median", line=dict(color=line, width=3)))
-    fig.add_trace(go.Scatter(x=years, y=p90, line=dict(width=0), showlegend=False, hoverinfo="skip"))
+    fig.add_trace(
+        go.Scatter(
+            x=years,
+            y=p50,
+            mode="lines",
+            name="Median",
+            line=dict(color=line, width=3),
+        )
+    )
+    fig.add_trace(
+        go.Scatter(
+            x=years,
+            y=p90,
+            mode="lines",
+            line=dict(width=0),
+            showlegend=False,
+            hoverinfo="skip",
+        )
+    )
     fig.add_trace(
         go.Scatter(
             x=years,
             y=p10,
+            mode="lines",
             fill="tonexty",
             fillcolor=rgba_fill,
             name="Pointwise 10th–90th percentile",
@@ -86,11 +104,21 @@ def _overlay_fan(
     b50, b10, b90 = (np.percentile(buy, q, axis=0) for q in (50, 10, 90))
     r50, r10, r90 = (np.percentile(rent, q, axis=0) for q in (50, 10, 90))
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=years, y=r90, line=dict(width=0), showlegend=False, hoverinfo="skip"))
+    fig.add_trace(
+        go.Scatter(
+            x=years,
+            y=r90,
+            mode="lines",
+            line=dict(width=0),
+            showlegend=False,
+            hoverinfo="skip",
+        )
+    )
     fig.add_trace(
         go.Scatter(
             x=years,
             y=r10,
+            mode="lines",
             fill="tonexty",
             fillcolor="rgba(0, 160, 60, 0.15)",
             name="Rent pointwise 10–90 %",
@@ -98,11 +126,21 @@ def _overlay_fan(
             hoverinfo="skip",
         )
     )
-    fig.add_trace(go.Scatter(x=years, y=b90, line=dict(width=0), showlegend=False, hoverinfo="skip"))
+    fig.add_trace(
+        go.Scatter(
+            x=years,
+            y=b90,
+            mode="lines",
+            line=dict(width=0),
+            showlegend=False,
+            hoverinfo="skip",
+        )
+    )
     fig.add_trace(
         go.Scatter(
             x=years,
             y=b10,
+            mode="lines",
             fill="tonexty",
             fillcolor="rgba(0, 90, 200, 0.15)",
             name="Buy pointwise 10–90 %",
@@ -110,8 +148,24 @@ def _overlay_fan(
             hoverinfo="skip",
         )
     )
-    fig.add_trace(go.Scatter(x=years, y=r50, name="Rent median", line=dict(color="#00a03c", width=3)))
-    fig.add_trace(go.Scatter(x=years, y=b50, name="Buy median", line=dict(color="#005ac8", width=3)))
+    fig.add_trace(
+        go.Scatter(
+            x=years,
+            y=r50,
+            mode="lines",
+            name="Rent median",
+            line=dict(color="#00a03c", width=3),
+        )
+    )
+    fig.add_trace(
+        go.Scatter(
+            x=years,
+            y=b50,
+            mode="lines",
+            name="Buy median",
+            line=dict(color="#005ac8", width=3),
+        )
+    )
     fig.update_layout(
         title=title,
         template="plotly_white",
