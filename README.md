@@ -1,3 +1,5 @@
+# DISCLAIMER: THIS IS A VIBE-CODED PROJECT. IT HAS NOT BEEN VERIFIED BY EXPERTS. DO NOT MAKE IMPORTANT FINANCIAL DECISIONS BASED ON ITS OUTPUTS.
+
 # Vaud Buy vs Rent Simulator
 
 This project compares two long-term household-finance paths for a family living in Vaud, Switzerland:
